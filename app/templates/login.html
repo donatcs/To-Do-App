@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+</head>
+<body>
+  <h1>Sign In</h1>
+<div class="row">
+    <div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+    </div>
+    </div>
+<p>New User? <a href="{{ url_for('register') }}">Click here to Register!</a></p>
+{% endblock %}
+</body>
+</html>
