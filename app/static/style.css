@@ -1,14 +1,14 @@
 html {
     min-height: 100vh!important;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif !important; 
 }
 
 body {
-  background: #E0EAFC !important;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #CFDEF3, #E0EAFC) !important;  /* Chrome 10-25, Safari 5.1-6 */
-
-  
-  }
+  background: #616161 !important;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #9bc5c3, #616161) !important;  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #c7f7f4, #387894) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+font-family: Helvetica Neue,Helvetica,Arial,sans-serif !important; 
+}
 
   header {
     background-color: #DFB887!important;
@@ -93,3 +93,39 @@ body::-webkit-scrollbar {
 }
 
 
+.row {
+
+  width: 150% !important;
+  justify-content: center !important;
+  justify-items: center !important;
+}
+
+.btn-default {
+  background-color: black !important;
+  color: white !important;
+  width: 100% !important;
+}
+
+.row {
+
+  padding-bottom: 17px;
+  padding-top: 17px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px;
+}
+
+
+#ntcmplt {
+
+  pointer-events: none !important;
+}
+
+#cmplt {
+
+  pointer-events: none !important;
+}
+
+.class { 
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+}

@@ -12,14 +12,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 
 </head>
-<body>
-  <h1>Sign In</h1>
+<body> <div class="d-flex justify-content-start">
+  <h1>Login</h1>
+  <br>
+  </div>
+  <div class="d-flex justify-content-center">
 <div class="row">
     <div class="col-md-4">
     {{ wtf.quick_form(form) }}
     </div>
     </div>
+  </div>
+  <div class="d-flex justify-content-evenly">
 <p>New User? <a href="{{ url_for('register') }}">Click here to Register!</a></p>
+</div>
 {% endblock %}
 </body>
 </html>
