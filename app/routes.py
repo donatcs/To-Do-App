@@ -6,12 +6,11 @@ from app.forms import LoginForm, RegistrationForm
 from app.models import User, Todo
 from datetime import date
 
-
 @app.route('/')
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html')
+    return render_template('index.html', User=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -53,16 +52,15 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/todo2")
+@app.route("/todo2", methods=['GET'])
 def todo():
-    todo_list = Todo.query.all()
+    todo_list = Todo.query.filter_by(user_id=current_user.id)
     return render_template("todo2.html", todo_list=todo_list)
-
-
+    
 @app.route("/add", methods=["POST"])
 def add():
     title = request.form.get("title")
-    new_todo = Todo(title=title, complete=False)
+    new_todo = Todo(title=title, user_id=current_user.id, complete=False)
     db.session.add(new_todo)
     db.session.commit()
     return redirect(url_for("todo"))
@@ -83,3 +81,25 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("todo"))
 
+@app.route("/star/<int:todo_id>")
+def star(todo_id):
+    todo = Todo.query.filter_by(id=todo_id).first()
+    todo.star = not todo.star
+    db.session.commit()
+    return redirect(url_for("todo"))
+
+    
+@app.route('/stats')
+def stats():
+    todo_all = Todo.query.count()
+    todo_completed = Todo.query.filter_by(complete=1).count()
+    todo_notcompleted = Todo.query.filter_by(complete=0).count()
+    print(todo_all)
+    print(todo_completed)
+    return render_template('stats.html', todo_all=todo_all, todo_completed=todo_completed, todo_notcompleted=todo_notcompleted)
+
+
+@app.route("/todo2/filter", methods=['GET'])
+def filter():
+    todo_list = Todo.query.filter_by(star=1) 
+    return render_template("todo2.html", todo_list=todo_list)

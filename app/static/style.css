@@ -6,7 +6,7 @@ html {
 body {
   background: #616161 !important;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #9bc5c3, #616161) !important;  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #c7f7f4, #387894) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, #c7f7f4, #1e5972) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 font-family: Helvetica Neue,Helvetica,Arial,sans-serif !important; 
 }
 
@@ -87,8 +87,8 @@ body::-webkit-scrollbar {
 
 .bg-body {
 
-  --bs-bg-opacity: 30% !important;
-  background-color: black !important;
+  --bs-bg-opacity: 70% !important;
+  background-color: rgb(255, 255, 255) !important;
   width: 100%;
 }
 
@@ -124,8 +124,52 @@ body::-webkit-scrollbar {
 #cmplt {
 
   pointer-events: none !important;
+  height: 35px !important;
+  font-size: 15px !important;
 }
 
 .class { 
 	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
+
+
+#imprtnt, #notimprtnt {
+  padding: 0rem!important;
+}
+
+.todotitle {
+
+  font-size: 16px !important;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif !important; 
+}
+
+
+.text-center {
+
+  font-size: 21px !important;
+}
+
+
+.ui.table {
+
+  
+  background-color: transparent !important;
+  width: 100vh !important;
+}
+
+
+.ui.vertical.menu.fluid {
+
+  -webkit-backdrop-filter: blur(8px);  /* Safari 9+ */
+backdrop-filter: blur(8px); /* Chrome and Opera */
+box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 5%);
+background-color: rgb(228 228 228 / 15%); 
+font-size: 17px;
+}
+
+.header.item {
+
+  background-color: rgb(255, 255, 255) !important;
+  opacity: 1;
+}
+

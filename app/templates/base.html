@@ -25,16 +25,16 @@
        <a href="{{ url_for('index') }}" class="btn btn-light">Home</a> 
 
       {% if current_user.is_anonymous %}
-    <a href="{{ url_for('login') }}" class="btn btn-dark">Login</a> </div>
+    <a href="{{ url_for('login') }}" class="btn btn-light">Login</a> </div>
       {% else %}
+      <a href="{{ url_for('stats') }}" class="btn btn-light" >Statistics</a> 
       <a href="{{ url_for('todo') }}" class="btn btn-light" >To-Do List</a> 
-             <a href="{{ url_for('logout') }}" class="btn btn-dark">Logout</a>
+      <a href="{{ url_for('logout') }}" class="btn btn-dark">Logout</a>
       {% endif %}   
   </div>
 </div>
-</form>
-
 </nav>
+</div>
 
 
 {% endblock %}
