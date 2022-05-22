@@ -18,8 +18,10 @@ bootstrap = Bootstrap(app)
 datepicker(app)
 moment = Moment(app)
 
-if __name__ == '__main__':
-    app.run()
+
 
 
 from app import routes, models
+
+if __name__ == '__main__':
+    app.run()

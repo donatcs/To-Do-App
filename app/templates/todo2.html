@@ -49,16 +49,16 @@
 
 <div style="margin-top: 50px;" class="ui container">
 
-    <h1 class="display-2">To Do App</h1><br><br>
+    <h1 class="display-2">What are you up to?</h1><br><br>
     <form class="ui form" action="/add" method="post">
         <div class="field">
             
             <p class="lead">
-                Placeholder...
+                Add a task...
               </p>
             <input type="text" name="title" placeholder="Enter Todo..."><br>
         </div>
-        <button type="submit"  class="btn btn-outline-dark">Add</button>
+        <button type="submit"  class="btn btn-outline-dark" id="addBtn">Add</button>
     
      
 
@@ -67,7 +67,7 @@
     <div class="shadow p-3 mb-5 bg-body rounded">
         {% if todo.star == True %}
          
-        <a class="btn btn-dark" href="/filter/">filter</a>
+       
 
         <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 35px; right: 45px; ">
             <div class="mt-auto p-2 bd-highlight" id="imprtnt"><div class="align-self-end"><a class="btn btn-warning" href="/star/{{ todo.id }}" ><span class="glyphicon glyphicon-star"></span></a></div></div>
@@ -97,7 +97,7 @@
            <a class="btn btn-danger" href="/delete/{{ todo.id }}">X</a>
 
            <div class="d-flex align-items-end flex-column bd-highlight mb-3" style="height: 8px;">
-            <div class="mt-auto p-2 bd-highlight"><span class="badge bg-dark" >{{ todo.id }}</span> </div>
+ 
           </div>
         
         </div>

@@ -19,7 +19,17 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
-<script src="{{ url_for('static', filename='etch.js') }}"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
 
 
 
@@ -41,18 +51,94 @@
 </nav>
 </div>
 
+<div class="wrapper">
+  <div class="left"></div>
+  <div class="right"></div>
+
+
+  <div class="content">
+    <div class="img-wrapper">
+      <div class="karina"></div>
+    </div>
+
+
+    <div class="text">
+      <h1>Hey {% if current_user.is_authenticated %}
+        {{ current_user.username }},
+      {% endif %}</h1>
+      <p>Welcome to your personal To-Do-App!</p>
+    </div>
+
+
+    <div class="bottomnav">
+      <ul>
+        <a href="https://github.com/donatcs/To-Do-App"><li>GitHub</li></a>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  TweenMax.to('.left', 2, {
+    delay: .2,
+    width: '50%',
+    ease: Power2.easeInOut
+  })
+
+  TweenMax.to('.right', 2, {
+    delay: .2,
+    width: '50%',
+    ease: Power3.easeInOut
+  })
+
+  TweenMax.from('.nav', 2, {
+    delay: .2,
+    opacity: 0,
+    ease: Expo.easeInOut
+  })
+
+  TweenMax.from('.text h1', 1, {
+    delay: .4,
+    x: 1000,
+    ease: Circ.easeInOut
+  })
+
+  TweenMax.from('.text p', 2, {
+    delay: .15,
+    x: 1000,
+    ease: Circ.easeInOut
+  })
+
+  TweenMax.to('.karina', 2, {
+    delay: 1.5,
+    width: '800px',
+    ease: Power2.easeInOut
+  })
+
+  TweenMax.staggerFrom('.bottomnav ul li', 2, {
+    delay: 1,
+    x: 1000,
+    ease: Circ.easeInOut
+  }, 0.08)
+
+  TweenMax.from('.info', 2, {
+    delay: 1.5,
+    y: 100,
+    ease: Circ.easeInOut
+  })
+
+  TweenMax.from('.name', 2, {
+    delay: 1.5,
+    x: -600,
+    ease: Circ.easeInOut
+  })
+
+</script>
 
 
 
    
-<h1>
-{% if current_user.is_authenticated %}
-  Hi {{ current_user.username }}!
-{% endif %}
-</h1>
-
-
-
 
 
 

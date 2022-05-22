@@ -68,7 +68,7 @@ def add():
 
 @app.route("/update/<int:todo_id>")
 def update(todo_id):
-    todo = Todo.query.filter_by(id=todo_id).first()
+    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
     todo.complete = not todo.complete
     db.session.commit()
     return redirect(url_for("todo"))
@@ -76,14 +76,14 @@ def update(todo_id):
 
 @app.route("/delete/<int:todo_id>")
 def delete(todo_id):
-    todo = Todo.query.filter_by(id=todo_id).first()
+    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
     db.session.delete(todo)
     db.session.commit()
     return redirect(url_for("todo"))
 
 @app.route("/star/<int:todo_id>")
 def star(todo_id):
-    todo = Todo.query.filter_by(id=todo_id).first()
+    todo = Todo.query.filter_by(id=todo_id, user_id=current_user.id).first()
     todo.star = not todo.star
     db.session.commit()
     return redirect(url_for("todo"))
@@ -92,11 +92,12 @@ def star(todo_id):
 @app.route('/stats')
 def stats():
     todo_all = Todo.query.count()
-    todo_completed = Todo.query.filter_by(complete=1).count()
-    todo_notcompleted = Todo.query.filter_by(complete=0).count()
+    todo_completed = Todo.query.filter_by(complete=True, user_id=current_user.id).count()
+    todo_notcompleted = Todo.query.filter_by(complete=False, user_id=current_user.id).count()
+    todo_starred = Todo.query.filter_by(star=True, user_id=current_user.id).count()
     print(todo_all)
     print(todo_completed)
-    return render_template('stats.html', todo_all=todo_all, todo_completed=todo_completed, todo_notcompleted=todo_notcompleted)
+    return render_template('stats.html', todo_all=todo_all, todo_completed=todo_completed, todo_notcompleted=todo_notcompleted, todo_starred=todo_starred)
 
 
 @app.route("/todo2/filter", methods=['GET'])

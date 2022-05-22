@@ -27,6 +27,7 @@ Mako==1.1.6
 MarkupSafe==2.0.1
 packaging==21.3
 param==1.12.1
+psycopg2-binary==2.9.3
 pyct==0.4.8
 pyparsing==3.0.8
 python-dateutil==2.8.2
