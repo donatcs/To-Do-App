@@ -26,6 +26,7 @@
 
 
 
+<div class="wrapper">
 <nav class="navbar navbar-dark bg-dark">
   <div class="btn-group btn-group-lg" role="group" aria-label="...">
        <a href="{{ url_for('index') }}" class="btn btn-light">Home</a> 
@@ -36,32 +37,42 @@
       <a href="{{ url_for('stats') }}" class="btn btn-light" >Statistics</a> 
       <a href="{{ url_for('todo') }}" class="btn btn-light" >To-Do List</a> 
       <a href="{{ url_for('logout') }}" class="btn btn-dark">Logout</a>
+      
       {% endif %}   
-  </div>
-</div>
+  
 </form>
 </nav>
-</div>
-
-
 
 
 
 <div style="margin-top: 50px;" class="ui container">
 
-    <h1 class="display-2">What are you up to?</h1><br><br>
+    <h1 class="display-2">What's up, {% if current_user.is_authenticated %}<br>
+      {{ current_user.username }}{% endif %}!</h1><br><br>
+
     <form class="ui form" action="/add" method="post">
         <div class="field">
             
             <p class="lead">
-                Add a task...
+               
               </p>
-            <input type="text" name="title" placeholder="Enter Todo..."><br>
+            <input type="text" id="inputz" name="title" placeholder="Add a task..."><br>
         </div>
+        <div class="dropdown">
         <button type="submit"  class="btn btn-outline-dark" id="addBtn">Add</button>
-    
-     
 
+        
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Filter tasks
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/todo/completed">Completed tasks</a>
+            <a class="dropdown-item" href="/todo/notcomplete">Not completed tasks</a>
+            <a class="dropdown-item" href="/todo/important">Only important tasks</a>
+          </div>
+        </div>
+     
+<br>
 
     {% for todo in todo_list %}
     <div class="shadow p-3 mb-5 bg-body rounded">
@@ -83,13 +94,13 @@
              <div class="todotitle">{{ todo.title }}</div>
 
            <hr>
-           <small class="text-muted">  <p>{{ moment(todo.timestamp).fromNow() }}</p></small> <p></p>    <a class="btn btn-dark" href="/update/{{ todo.id }}">Update</a>
+           <small class="text-muted">  <p>{{ moment(todo.timestamp).fromNow() }}</p></small> <p></p>    <a class="btn btn-dark" id="updt" href="/update/{{ todo.id }}">Update</a>
            {% if todo.complete == False %}
          
-           <span class="btn btn-light" id="ntcmplt">Not Complete</span>
-           {% else %}
+           <button type="button" id="ntcmplt" class="btn btn-light"><span class=""></span>Not Completed</button> </span>       
+               {% else %}
    
-           <button type="button" id="cmplt" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok"></span> Completed</button> </span>
+           <button type="button" id="cmplt" class="btn btn-light"><span class="glyphicon glyphicon-ok"></span> Completed</button> </span>
    
            {% endif %}
            
@@ -112,6 +123,8 @@
 
 </div>
 
+<script>$('.dropdown-toggle').dropdown()
+</script>
 
 {% endblock %}
 {% block content %}

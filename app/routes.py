@@ -52,7 +52,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route("/todo2", methods=['GET'])
+@app.route("/todo", methods=['GET'])
 def todo():
     todo_list = Todo.query.filter_by(user_id=current_user.id)
     return render_template("todo2.html", todo_list=todo_list)
@@ -100,7 +100,24 @@ def stats():
     return render_template('stats.html', todo_all=todo_all, todo_completed=todo_completed, todo_notcompleted=todo_notcompleted, todo_starred=todo_starred)
 
 
-@app.route("/todo2/filter", methods=['GET'])
+@app.route("/todo/filter", methods=['GET'])
 def filter():
     todo_list = Todo.query.filter_by(star=1) 
+    return render_template("todo2.html", todo_list=todo_list)
+
+
+
+@app.route("/todo/completed")
+def todocomplete():
+    todo_list = Todo.query.filter_by(complete=True, user_id=current_user.id)
+    return render_template("todo2.html", todo_list=todo_list)
+
+@app.route("/todo/important")
+def todoimportant():
+    todo_list = Todo.query.filter_by(star=True, user_id=current_user.id)
+    return render_template("todo2.html", todo_list=todo_list)
+
+@app.route("/todo/notcomplete")
+def todonotcomplete():
+    todo_list = Todo.query.filter_by(complete=False, user_id=current_user.id)
     return render_template("todo2.html", todo_list=todo_list)

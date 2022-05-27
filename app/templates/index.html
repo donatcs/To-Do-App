@@ -26,11 +26,13 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <script src="static/bg.js"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 
-
+<div class="wrapper">
 
 
 
@@ -51,7 +53,7 @@
 </nav>
 </div>
 
-<div class="wrapper">
+<div class="wr">
   <div class="left"></div>
   <div class="right"></div>
 
@@ -70,13 +72,13 @@
     </div>
 
 
-    <div class="bottomnav">
+  <!--   <div class="bottomnav">
       <ul>
         <a href="https://github.com/donatcs/To-Do-App"><li>GitHub</li></a>
       </ul>
     </div>
   </div>
-</div>
+</div> -->
 
 <script>
 
@@ -88,7 +90,7 @@
 
   TweenMax.to('.right', 2, {
     delay: .2,
-    width: '50%',
+    width: '10%',
     ease: Power3.easeInOut
   })
 
@@ -105,7 +107,7 @@
   })
 
   TweenMax.from('.text p', 2, {
-    delay: .15,
+    delay: .3,
     x: 1000,
     ease: Circ.easeInOut
   })
@@ -136,14 +138,9 @@
 
 </script>
 
-
+</div>
 
    
-
-
-
-
-
 
 
 {% endblock %}
